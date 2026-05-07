@@ -1,0 +1,60 @@
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  gap: 8px;
+}
+
+/* Прячем стандартный уродливый чекбокс */
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* Рисуем наш кастомный чекбокс */
+.customCheckbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #d0d7de;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  background-color: #fff;
+
+  /* Галочка (рисуем через border) */
+  &::after {
+    content: '';
+    width: 5px;
+    height: 9px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform 0.2s;
+    margin-top: -2px;
+  }
+}
+
+/* Состояние: когда чекбокс выбран */
+.input:checked + .customCheckbox {
+  background-color: #238636; /* Зеленый GitHub */
+  border-color: #238636;
+}
+
+.input:checked + .customCheckbox::after {
+  transform: rotate(45deg) scale(1);
+}
+
+/* Состояние: при наведении */
+.input:focus + .customCheckbox {
+  box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.3);
+}
+
+.label {
+  font-size: 14px;
+  color: #24292f;
+}
