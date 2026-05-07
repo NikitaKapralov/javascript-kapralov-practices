@@ -1,0 +1,41 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  max-width: 300px; /* Ограничим ширину для красоты */
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #24292f;
+}
+
+.input {
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s;
+
+  &:focus {
+    border-color: #0969da;
+    box-shadow: 0 0 0 3px rgba(9, 105, 218, 0.3);
+  }
+}
+
+.inputError {
+  border-color: #cf222e;
+
+  &:focus {
+    border-color: #cf222e;
+    box-shadow: 0 0 0 3px rgba(207, 34, 46, 0.3);
+  }
+}
+
+.error {
+  font-size: 12px;
+  color: #cf222e;
+}
