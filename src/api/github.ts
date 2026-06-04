@@ -70,3 +70,28 @@ export const searchRepos = async (query: string): Promise<Repo[]> => {
   })
   return response.data.items
 }
+
+export type Contributor = {
+  login: string
+  avatar_url: string
+  contributions: number
+}
+
+export type CommitActivity = {
+  days: number[]
+  total: number
+}
+
+export const getContributors = async (owner: string, repoName: string): Promise<Contributor[]> => {
+  const response = await apiClient.get<Contributor[]>(`/repos/${owner}/${repoName}/contributors`, {
+    params: {
+      per_page: 100
+    }
+  })
+  return response.data
+}
+
+export const getCommitActivity = async (owner: string, repoName: string): Promise<CommitActivity[]> => {
+  const response = await apiClient.get<CommitActivity[]>(`/repos/${owner}/${repoName}/stats/commit_activity`)
+  return response.data
+}
